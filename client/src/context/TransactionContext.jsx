@@ -123,13 +123,15 @@ export const TransactionProvider = ({ children }) => {
       console.log(`Loading - ${transactionHash.hash}`)
       await transactionHash.wait();
       console.log(`Success - ${transactionHash.hash}`)
-      setisLoading(false)
       const transactionCount = await transactionContract.getTransactionCount();
       setTransactionCount(transactionCount.toNumber())
+      setisLoading(false)
       window.location.reload();
+    
     }catch(error){
       console.log(error);
-      throw new Error("No ethereum object");
+   
+    
     }
   }
   useEffect(() => {
